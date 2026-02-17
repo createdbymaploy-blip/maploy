@@ -10,11 +10,11 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen bg-bg text-white font-sans selection:bg-accent selection:text-black">
+    <div className="min-h-screen bg-bg text-white font-sans selection:bg-accent selection:text-black overflow-x-hidden">
       <AuroraBackground />
       <Navbar />
       
-      <main className="container mx-auto">
+      <main className="w-full">
         <Hero />
         <About />
         <Projects />

@@ -89,8 +89,9 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="pb-36 relative z-10 px-5">
-      <div className="max-w-[1100px] mx-auto">
+    <section id="projects" className="pb-36 relative z-10">
+      {/* BOXED CONTAINER: max-w-[1100px] + Horizontal Padding */}
+      <div className="max-w-[1100px] mx-auto px-6 md:px-10">
         <div className="mb-10 text-center md:text-left">
            <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-sm font-semibold text-slate-300 mb-4">
               <span className="text-accent text-lg leading-none">•</span> portfolio
@@ -109,12 +110,6 @@ const Projects: React.FC = () => {
                className="group block bg-[#0b1120]/60 backdrop-blur-md border border-white/10 rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent shadow-[0_4px_20px_rgba(0,0,0,0.3)] cursor-pointer"
              >
                 <div className="w-full aspect-video overflow-hidden relative border-b border-white/5 bg-black">
-                   {/* 
-                      New Interaction Rules:
-                      Default: saturate(60%) brightness(75%) contrast(90%)
-                      Hover: saturate(100%) brightness(100%) contrast(100%) + Scale 1.02
-                      Transition: 0.4s ease-out
-                   */}
                    {project.video ? (
                      <video 
                        src={getAsset(project.video)} 
@@ -122,7 +117,6 @@ const Projects: React.FC = () => {
                        muted 
                        loop 
                        playsInline
-                       // Uses the image as a preview poster
                        poster={project.image ? getAsset(project.image) : undefined}
                        onMouseOver={(e) => {
                            e.currentTarget.play();
@@ -140,7 +134,6 @@ const Projects: React.FC = () => {
                      />
                    )}
                    
-                   {/* Play Button Overlay (Visible on Hover) */}
                    <div className="absolute inset-0 bg-black/10 flex justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-[400ms] ease-out pointer-events-none">
                         <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 flex items-center justify-center transform scale-75 group-hover:scale-100 transition-transform duration-300">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -166,7 +159,6 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Lightbox Modal - Rendered via Portal to ensure top z-index */}
       {selectedProject && createPortal(
         <div 
             className="fixed inset-0 z-[9999] flex justify-center items-center p-4 bg-black/95 backdrop-blur-md transition-opacity duration-300"
@@ -174,9 +166,8 @@ const Projects: React.FC = () => {
         >
             <div 
                 className="relative w-full max-w-4xl bg-[#0b1120] rounded-2xl overflow-hidden shadow-2xl border border-white/10"
-                onClick={(e) => e.stopPropagation()} // Prevent closing when clicking content
+                onClick={(e) => e.stopPropagation()} 
             >
-                {/* Close Button */}
                 <button 
                     onClick={closeLightbox}
                     className="absolute top-4 right-4 z-50 p-2 rounded-full bg-black/50 hover:bg-white/20 text-white transition-colors"

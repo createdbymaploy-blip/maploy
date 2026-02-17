@@ -25,21 +25,16 @@ const FAQ: React.FC = () => {
   ];
 
   return (
-    <section id="faq" className="py-24 relative z-10 px-5">
-      {/* 
-         Changed max-w to 1100px to match Projects/About sections.
-         Changed grid cols to [0.4fr_0.6fr] to give more space to questions and tighten the left column.
-      */}
-      <div className="max-w-[1100px] mx-auto grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-12 lg:gap-20 items-start">
+    <section id="faq" className="py-24 relative z-10">
+      {/* BOXED CONTAINER: max-w-[1100px] + Horizontal Padding */}
+      <div className="max-w-[1100px] mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[0.4fr_0.6fr] gap-12 lg:gap-20 items-start">
         
         {/* LEFT COLUMN */}
-        {/* Adjusted sticky top to 20 to raise it slightly */}
         <div className="lg:sticky lg:top-20 relative">
             <StarIcon className="absolute -top-12 -left-8 w-8 h-8 text-accent animate-pulse delay-100 drop-shadow-[0_0_10px_rgba(0,212,255,0.8)]" />
             <StarIcon className="absolute top-0 right-10 w-4 h-4 text-white animate-pulse delay-300 opacity-60" />
             <StarIcon className="absolute top-[30%] -left-12 w-3 h-3 text-slate-400 animate-pulse delay-700 opacity-40" />
             
-            {/* Reduced mb-6 to mb-4 to raise the title */}
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-sm font-semibold text-slate-300 mb-4">
               <span className="text-accent text-lg leading-none">•</span> faq
             </div>
@@ -48,12 +43,6 @@ const FAQ: React.FC = () => {
              <em className="font-serif italic font-light text-slate-400">asked questions</em>
            </h2>
            
-           {/* 
-             Knight Image:
-             - Reduced top margin (mt-10) to raise the knight.
-             - Reduced size (max-w-[240px]) to prevent overflow.
-             - Kept shadow and opacity.
-           */}
            <div className="relative w-full max-w-[240px] aspect-square mt-10 mx-auto lg:mx-0 pointer-events-none select-none">
               <div className="w-full h-full animate-float">
                   <img 
@@ -80,7 +69,6 @@ const FAQ: React.FC = () => {
                 ${activeIndex === index ? 'bg-[#0f172a]/80 border-accent shadow-[0_0_30px_-10px_rgba(0,212,255,0.15)]' : 'bg-[#0b1120]/60 border-white/10 hover:border-white/20'}
               `}
             >
-              {/* Increased padding from p-6 to px-8 py-6 */}
               <div className="px-8 py-6 flex justify-between items-center select-none">
                 <span className="text-xl font-semibold text-white lowercase tracking-tight">{item.question}</span>
                 <span className={`text-slate-400 transition-all duration-300 ml-4 flex-shrink-0 ${activeIndex === index ? 'rotate-45 text-white' : ''}`}>
@@ -93,7 +81,6 @@ const FAQ: React.FC = () => {
                 className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] ${activeIndex === index ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
               >
                 <div className="overflow-hidden">
-                   {/* Increased padding for answer as well */}
                    <p className="px-8 pb-8 text-slate-400 leading-relaxed text-lg lowercase">
                      {item.answer}
                    </p>
