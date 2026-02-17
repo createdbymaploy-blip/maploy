@@ -2,7 +2,7 @@ import React from 'react';
 
 // This is the link to your public GitHub repository's "Raw" file server.
 // It allows us to load images directly from your repo code.
-export const GITHUB_BASE_URL = "https://raw.githubusercontent.com/createdbymaploy-blip/portfolio/main/";
+export const GITHUB_BASE_URL = "https://raw.githubusercontent.com/createdbymaploy-blip/maploy/main/";
 
 // Helper to get full URL
 export const getAsset = (filename: string) => `${GITHUB_BASE_URL}${filename}`;
