@@ -1,5 +1,3 @@
-import React from 'react';
-
 export interface Project {
   id: number;
   image?: string;
@@ -13,12 +11,4 @@ export interface Project {
 export interface FaqItem {
   question: string;
   answer: string;
-}
-
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [elemName: string]: any;
-    }
-  }
 }
