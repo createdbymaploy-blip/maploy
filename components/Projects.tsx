@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { getAsset } from '../constants';
 import { Project } from '../types';
 
@@ -11,6 +12,18 @@ const Projects: React.FC = () => {
     const match = url.match(regExp);
     return (match && match[2].length === 11) ? match[2] : null;
   };
+
+  // Lock body scroll when lightbox is open
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedProject]);
 
   // Projects Data
   const projects: Project[] = [
@@ -153,10 +166,10 @@ const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
-      {selectedProject && (
+      {/* Lightbox Modal - Rendered via Portal to ensure top z-index */}
+      {selectedProject && createPortal(
         <div 
-            className="fixed inset-0 z-[100] flex justify-center items-center p-4 bg-black/90 backdrop-blur-sm transition-opacity duration-300"
+            className="fixed inset-0 z-[9999] flex justify-center items-center p-4 bg-black/95 backdrop-blur-md transition-opacity duration-300"
             onClick={closeLightbox}
         >
             <div 
@@ -206,7 +219,8 @@ const Projects: React.FC = () => {
                     <p className="text-slate-400">{selectedProject.stats}</p>
                 </div>
             </div>
-        </div>
+        </div>,
+        document.body
       )}
     </section>
   );
