@@ -45,7 +45,7 @@ const About: React.FC = () => {
                 </div>
                 
                 {/* Title (Aligned bottom) */}
-                <h2 className="text-[4.5rem] font-medium leading-[0.9] text-white">
+                <h2 className="text-[4.5rem] font-medium leading-[0.9] text-white whitespace-nowrap">
                    I’m <em className="font-serif italic text-slate-300">Bulat</em>
                 </h2>
 

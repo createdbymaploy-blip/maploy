@@ -35,7 +35,7 @@ const Hero: React.FC = () => {
                 <img 
                   src={getAsset('queen.png')} 
                   alt="" 
-                  className="w-full h-full object-contain opacity-40 blur-sm rotate-[18deg]" 
+                  className="w-full h-full object-contain opacity-40 blur-sm rotate-[18deg] drop-shadow-2xl" 
                 />
             </div>
         </div>
